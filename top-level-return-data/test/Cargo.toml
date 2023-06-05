@@ -1,0 +1,15 @@
+[package]
+name = "return-data-test"
+version = "0.0.0"
+license = "Apache-2.0"
+edition = "2018" # follows SPL
+
+[features]
+test-sbf = []
+
+[dev-dependencies]
+solana-program-test.workspace = true
+solana-sdk.workspace = true
+tokio.workspace = true
+getter = { path = "../getter", features = ["no-entrypoint"] }
+setter = { path = "../setter", features = ["no-entrypoint"] }

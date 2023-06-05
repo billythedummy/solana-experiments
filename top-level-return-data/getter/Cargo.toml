@@ -1,0 +1,15 @@
+[package]
+name = "getter"
+version = "0.0.0"
+license = "Apache-2.0"
+edition = "2018" # follows SPL
+
+[features]
+no-entrypoint = []
+
+[dependencies]
+getrandom = { version = "0.2.9", features = ["custom"] } # idk when this started, prolly when zk and crypto were introduced as deps to solana-program
+solana-program.workspace = true
+
+[lib]
+crate-type = ["cdylib", "lib"]
