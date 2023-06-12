@@ -17,4 +17,10 @@ cargo-test-sbf
 
 ## Result
 
-- `solana-program-test`'s bank client fails silently when an account is below rent-exempt minimum at the end of an instruction, and the account is simply deleted. This causes the `fail_create_without_consuming` test to succeed and `create_then_consume` to fail when attempting to read the data stored in the potato.
+- **YES**, you can create a hot potato
+- The key is to **Create the hot potato account with lamports less than rent-exempt minimum e.g. 1 lamport**:
+    - This causes `TransactionError(InsufficientFundsForRent { account_index: 1 })` to be thrown at end of transaction if the potato is created in the tx and has non-zero but insufficient balance at the end of it
+- Failed attempts:
+    - Creating a hot potato with 0 lamports results in the account not being created in the first place
+    - Creating a hot potato with lamports >= rent exempt min and then removing all of it at the end of create instruction
+    - Both results in the `fail_create_without_consuming` tx succeeding because the potato account has 0 balance and is gc-ed at end of tx, so the tx is valid (bad)

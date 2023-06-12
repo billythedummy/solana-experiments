@@ -21,11 +21,12 @@ pub fn create_potato_ix(payer: &Pubkey) -> Instruction {
     )
 }
 
-pub fn consume_potato_ix() -> Instruction {
+pub fn consume_potato_ix(refund_to: &Pubkey) -> Instruction {
     Instruction::new_with_borsh(
         crate::ID,
         &HotPotatoInstruction::ConsumePotato,
         vec![
+            AccountMeta::new(*refund_to, false),
             AccountMeta::new(find_hot_potato_pda().0, false),
         ]
     )

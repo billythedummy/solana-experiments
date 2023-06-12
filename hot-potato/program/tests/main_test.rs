@@ -16,7 +16,7 @@ async fn create_then_consume() {
     let mut tx = Transaction::new_with_payer(
         &[
             hot_potato::instructions::create_potato_ix(&payer.pubkey()),
-            hot_potato::instructions::consume_potato_ix(),
+            hot_potato::instructions::consume_potato_ix(&payer.pubkey()),
         ],
         Some(&payer.pubkey()),
     );
@@ -41,5 +41,5 @@ async fn fail_create_without_consuming() {
         Some(&payer.pubkey()),
     );
     tx.sign(&[&payer], recent_blockhash);
-    banks_client.process_transaction(tx).await.unwrap();
+    assert!(banks_client.process_transaction(tx).await.is_err());
 }
