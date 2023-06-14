@@ -5,8 +5,8 @@ Tests if it's possible to implement a [hot potato](https://examples.sui.io/patte
 ## Setup
 
 - `2gt7fw22RH8g8Q12JrzrRvEMBNLKB4QnLwQiUXnhGPb6` hot-potato program with 2 instructions:
-    - `create_potato()` creates an account with allocated space but 0 balance
-    - `consume_potato()` deletes the same account by realloc-ing to 0
+    - `create_potato()` creates the hot potato account that must be deleted before the end of a transaction
+    - `consume_potato()` deletes the hot potato account
 - tests check if a transaction with `create_potato()` followed by `consume_potato()` is possible and if `create_potato(`) without `consume_potato()` fails
 
 ## Running
