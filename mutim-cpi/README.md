@@ -21,7 +21,7 @@ cargo-test-sbf
 
 ## Result
 
-**Program C fails with writable privilege escalated when it attempts to CPI program C with account reset to mutable**
+**Program B fails with writable privilege escalated when it attempts to CPI program C with account reset to mutable**
 
 This confirms [@enzoampil's reply](https://github.com/enzoampil)
 
