@@ -23,7 +23,7 @@ cargo-test-sbf
 
 **Program B fails with writable privilege escalated when it attempts to CPI program C with account reset to mutable**
 
-This confirms [@enzoampil's reply](https://github.com/enzoampil)
+This confirms [@enzoampil's reply](https://twitter.com/AND__SO/status/1668917116211453952)
 
 ```
 [2023-06-14T10:20:43.943342358Z DEBUG solana_runtime::message_processor::stable_log] Program 22222222222222222222222222222222222222222222 invoke [1]
