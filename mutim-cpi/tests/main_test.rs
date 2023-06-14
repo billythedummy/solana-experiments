@@ -43,7 +43,7 @@ mod prog_a {
             &[],
             vec![
                 AccountMeta::new(*payer, true),
-                AccountMeta::new(*dst, false),
+                AccountMeta::new(*dst, true),
                 AccountMeta::new_readonly(crate::prog_b::id(), false),
                 AccountMeta::new_readonly(crate::prog_c::id(), false),
                 AccountMeta::new_readonly(system_program::id(), false),
@@ -87,7 +87,7 @@ mod prog_b {
             &[],
             vec![
                 AccountMeta::new_readonly(*payer, true),
-                AccountMeta::new(*dst, false),
+                AccountMeta::new(*dst, true),
                 AccountMeta::new_readonly(crate::prog_c::id(), false),
                 AccountMeta::new_readonly(system_program::id(), false),
             ],
@@ -139,7 +139,7 @@ mod prog_c {
             &[],
             vec![
                 AccountMeta::new(*payer, true),
-                AccountMeta::new(*dst, false),
+                AccountMeta::new(*dst, true),
                 AccountMeta::new_readonly(system_program::id(), false),
             ],
         )
@@ -162,6 +162,6 @@ async fn main() {
         )],
         Some(&payer.pubkey()),
     );
-    tx.sign(&[&payer], recent_blockhash);
+    tx.sign(&[&payer, &dst], recent_blockhash);
     banks_client.process_transaction(tx).await.unwrap();
 }
