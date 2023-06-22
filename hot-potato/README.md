@@ -24,3 +24,7 @@ cargo-test-sbf
     - Creating a hot potato with 0 lamports results in the account not being created in the first place
     - Creating a hot potato with lamports >= rent exempt min and then removing all of it at the end of create instruction
     - Both results in the `fail_create_without_consuming` tx succeeding because the potato account has 0 balance and is gc-ed at end of tx, so the tx is valid (bad)
+ 
+## Security
+
+DO **NOT** USE THIS AS THE MAIN GUARD. Users can trivially extend the life of the hot potato by sending rent-exempt lamports to it since the runtime allows SOL to be credited to any account
