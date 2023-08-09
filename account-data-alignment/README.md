@@ -20,7 +20,9 @@ What happens if we pass:
 - an account with 16-byte aligned account data
 
 Byte offset end of first empty account = 10344
+
 Byte offset end of second account (duplicate of first) = 10352
+
 Start of third account's account data = 10440, not divisible by 16.
 
 ## Running the tests
