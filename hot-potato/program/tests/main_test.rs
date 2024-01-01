@@ -35,9 +35,7 @@ async fn fail_create_without_consuming() {
     );
     let (mut banks_client, payer, recent_blockhash) = program_test.start().await;
     let mut tx = Transaction::new_with_payer(
-        &[
-            hot_potato::instructions::create_potato_ix(&payer.pubkey()),
-        ],
+        &[hot_potato::instructions::create_potato_ix(&payer.pubkey())],
         Some(&payer.pubkey()),
     );
     tx.sign(&[&payer], recent_blockhash);

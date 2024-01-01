@@ -1,5 +1,3 @@
-use std::path::PathBuf;
-
 use solana_program::instruction::{AccountMeta, Instruction, InstructionError};
 use solana_program_test::{processor, BanksClientError, ProgramTest};
 use solana_sdk::{
@@ -17,10 +15,6 @@ mod u128_account {
 }
 
 fn create_program_test() -> ProgramTest {
-    let mut target_pb = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-    target_pb.push("target/deploy");
-    std::env::set_var("SBF_OUT_DIR", target_pb.to_str().unwrap());
-
     let mut program_test = ProgramTest::new(
         "account_data_alignment",
         account_data_alignment::id(),

@@ -1,8 +1,10 @@
 [package]
-name = "getter"
-version = "0.0.0"
-license = "Apache-2.0"
+name = "cpi-normal"
+version = "0.1.0"
 edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
 
 [features]
 no-entrypoint = []
@@ -10,5 +12,3 @@ no-entrypoint = []
 [dependencies]
 solana-program = { workspace = true }
 
-[lib]
-crate-type = ["cdylib", "lib"]

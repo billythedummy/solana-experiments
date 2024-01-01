@@ -2,7 +2,11 @@ use std::convert::TryInto;
 
 use borsh::{BorshDeserialize, BorshSerialize};
 use solana_program::{
-    account_info::{AccountInfo, next_account_info}, entrypoint::ProgramResult, pubkey::Pubkey, program::invoke_signed, program_error::ProgramError,
+    account_info::{next_account_info, AccountInfo},
+    entrypoint::ProgramResult,
+    program::invoke_signed,
+    program_error::ProgramError,
+    pubkey::Pubkey,
 };
 
 use crate::{instructions::HotPotatoInstruction, pda::find_hot_potato_pda};
@@ -40,21 +44,23 @@ pub fn process_create_potato(accounts: &[AccountInfo]) -> ProgramResult {
     let (_potato, bump) = find_hot_potato_pda();
     invoke_signed(
         &create_ix,
-        &[
-            payer.to_owned(),
-            potato.to_owned(),
-        ],
+        &[payer.to_owned(), potato.to_owned()],
         &[&[&[bump]]],
     )?;
     {
         let mut d = &mut **potato.try_borrow_mut_data().unwrap();
         69u32.serialize(&mut d).unwrap();
     }
-    
+
     // comment out for non rent-exempt case
     //**potato.try_borrow_mut_lamports().unwrap() = 0;
     //**payer.try_borrow_mut_lamports().unwrap() = payer_original;
-    solana_program::msg!("create: addr {}, len {}, data {:?}", potato.key, potato.try_borrow_data().unwrap().len(), potato.try_borrow_data().unwrap());
+    solana_program::msg!(
+        "create: addr {}, len {}, data {:?}",
+        potato.key,
+        potato.try_borrow_data().unwrap().len(),
+        potato.try_borrow_data().unwrap()
+    );
     Ok(())
 }
 
@@ -64,9 +70,9 @@ pub fn process_consume_potato(accounts: &[AccountInfo]) -> ProgramResult {
     let refund_to = next_account_info(account_info_iter)?;
     let potato = next_account_info(account_info_iter)?;
     {
-        let d = &**potato.try_borrow_data().unwrap();
+        let mut d = &**potato.try_borrow_data().unwrap();
         solana_program::msg!("consume: addr {}, len {}", potato.key, d.len());
-        let shld_be_69 = u32::deserialize(&mut d.as_ref()).unwrap();
+        let shld_be_69 = u32::deserialize(&mut d).unwrap();
         if shld_be_69 != 69 {
             return Err(ProgramError::Custom(69));
         }

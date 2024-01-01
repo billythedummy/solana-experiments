@@ -1,0 +1,20 @@
+[workspace]
+resolver = "2"
+
+members = [
+    "account-data-alignment",
+    "cpi-by-ref/*",
+    "hot-potato/program",
+    "mutim-cpi",
+    "top-level-return-data/*"
+]
+
+[workspace.dependencies]
+ahash = "=0.8.6" # https://github.com/solana-labs/solana/issues/34609
+borsh = "^0.10"
+bytemuck = "^1"
+lazy_static = "^1"
+solana-program = "^1"
+solana-program-test = "^1"
+solana-sdk = "^1"
+tokio = "^1"

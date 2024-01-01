@@ -163,5 +163,5 @@ async fn main() {
         Some(&payer.pubkey()),
     );
     tx.sign(&[&payer, &dst], recent_blockhash);
-    banks_client.process_transaction(tx).await.unwrap();
+    banks_client.process_transaction(tx).await.unwrap_err();
 }
