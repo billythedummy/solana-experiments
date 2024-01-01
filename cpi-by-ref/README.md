@@ -14,3 +14,7 @@ Test if it's possible to CPI instructions without allocating `Vec`s.
 Compute units consumed in `cargo-test-sbf`:
 - `cpi-by-ref`: 1802
 - `cpi-normal`: 2120
+
+`.so` binary sizes:
+- `cpi-by-ref`: 23848
+- `cpi-normal`: 25112
