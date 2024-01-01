@@ -2,21 +2,20 @@
 name = "hot-potato"
 version = "0.0.0"
 license = "Apache-2.0"
-edition = "2018" # follows SPL
+edition = "2021"
 
 [features]
 no-entrypoint = []
 test-sbf = []
 
 [dependencies]
-borsh.workspace = true
-getrandom = { version = "0.2.9", features = ["custom"] } # idk when this started, prolly when zk and crypto were introduced as deps to solana-program
-solana-program.workspace = true
+borsh = { workspace = true }
+solana-program = { workspace = true }
 
 [dev-dependencies]
-solana-program-test.workspace = true
-solana-sdk.workspace = true
-tokio.workspace = true
+solana-program-test = { workspace = true }
+solana-sdk = { workspace = true }
+tokio = { workspace = true }
 
 [lib]
 crate-type = ["cdylib", "lib"]

@@ -25,10 +25,6 @@ Byte offset end of second account (duplicate of first) = 10352
 
 Start of third account's account data = 10440, not divisible by 16.
 
-## Running the tests
-
-Since `prefer_bpf=true`, be sure to recompile the `.so` with `cargo build-sbf` after every change to program.
-
 ## Results
 
 `bytemuck::try_from_bytes()` fails with `TargetAlignmentGreaterAndInputNotAligned` when data is not aligned, as expected.
