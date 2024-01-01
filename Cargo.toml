@@ -3,6 +3,7 @@ resolver = "2"
 
 members = [
     "account-data-alignment",
+    "cpi-by-ref",
     "hot-potato/program",
     "mutim-cpi",
     "top-level-return-data/*"
