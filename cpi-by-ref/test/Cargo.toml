@@ -1,0 +1,14 @@
+[package]
+name = "cpi-by-ref-test"
+version = "0.1.0"
+edition = "2021"
+
+[dev-dependencies]
+lazy_static = { workspace = true }
+solana-program = { workspace = true }
+solana-program-test = { workspace = true }
+solana-sdk = { workspace = true }
+tokio = { workspace = true }
+
+cpi-by-ref = { path = "../by-ref", features = ["no-entrypoint"] }
+cpi-normal = { path = "../normal", features = ["no-entrypoint"] }

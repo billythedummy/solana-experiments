@@ -886,9 +886,26 @@ name = "cpi-by-ref"
 version = "0.1.0"
 dependencies = [
  "solana-program",
+]
+
+[[package]]
+name = "cpi-by-ref-test"
+version = "0.1.0"
+dependencies = [
+ "cpi-by-ref",
+ "cpi-normal",
+ "lazy_static",
+ "solana-program",
  "solana-program-test",
  "solana-sdk",
  "tokio",
+]
+
+[[package]]
+name = "cpi-normal"
+version = "0.1.0"
+dependencies = [
+ "solana-program",
 ]
 
 [[package]]

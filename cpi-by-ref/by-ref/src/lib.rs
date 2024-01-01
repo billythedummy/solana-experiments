@@ -5,8 +5,6 @@ use solana_program::{
     system_program,
 };
 
-solana_program::entrypoint!(process_instruction);
-
 // Adapted from:
 // https://github.com/solana-labs/solana/blob/26d058185e4f9ed2982f1fb2527b146fdd9e3bed/sdk/program/src/stable_layout/stable_vec.rs#L25C1-L31C2
 #[derive(Debug, PartialEq)]
@@ -38,6 +36,9 @@ pub struct StableInstruction {
     pub data: StableVec<u8>,
     pub program_id: Pubkey,
 }
+
+#[cfg(not(feature = "no-entrypoint"))]
+solana_program::entrypoint!(process_instruction);
 
 pub fn process_instruction(
     _program_id: &Pubkey,
