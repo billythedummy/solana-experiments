@@ -1,0 +1,14 @@
+[package]
+name = "pubkey-cmp-test"
+version = "0.1.0"
+edition = "2021"
+
+[dev-dependencies]
+lazy_static = { workspace = true }
+solana-program = { workspace = true }
+solana-program-test = { workspace = true }
+solana-sdk = { workspace = true }
+tokio = { workspace = true }
+
+pubkey-cmp-normal = { path = "../normal", features = ["no-entrypoint"] }
+pubkey-cmp-syscall = { path = "../syscall", features = ["no-entrypoint"] }

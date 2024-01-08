@@ -6,6 +6,7 @@ members = [
     "cpi-by-ref/*",
     "hot-potato/program",
     "mutim-cpi",
+    "pubkey-cmp/*",
     "top-level-return-data/*"
 ]
 

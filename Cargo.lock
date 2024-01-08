@@ -2651,6 +2651,33 @@ dependencies = [
 ]
 
 [[package]]
+name = "pubkey-cmp-normal"
+version = "0.1.0"
+dependencies = [
+ "solana-program",
+]
+
+[[package]]
+name = "pubkey-cmp-syscall"
+version = "0.1.0"
+dependencies = [
+ "solana-program",
+]
+
+[[package]]
+name = "pubkey-cmp-test"
+version = "0.1.0"
+dependencies = [
+ "lazy_static",
+ "pubkey-cmp-normal",
+ "pubkey-cmp-syscall",
+ "solana-program",
+ "solana-program-test",
+ "solana-sdk",
+ "tokio",
+]
+
+[[package]]
 name = "qstring"
 version = "0.7.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
