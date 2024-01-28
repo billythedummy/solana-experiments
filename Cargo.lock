@@ -2589,6 +2589,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5b40af805b3121feab8a3c29f04d8ad262fa8e0561883e7653e024ae4479e6de"
 
 [[package]]
+name = "priv-program"
+version = "0.1.0"
+dependencies = [
+ "solana-program",
+]
+
+[[package]]
 name = "proc-macro-crate"
 version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2648,6 +2655,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2dd5e8a1f1029c43224ad5898e50140c2aebb1705f19e67c918ebf5b9e797fe1"
 dependencies = [
  "unicode-ident",
+]
+
+[[package]]
+name = "pub-program"
+version = "0.1.0"
+dependencies = [
+ "solana-program",
 ]
 
 [[package]]
