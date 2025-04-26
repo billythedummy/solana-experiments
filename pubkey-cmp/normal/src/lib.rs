@@ -7,11 +7,11 @@ use solana_program::{
 solana_program::entrypoint!(process_instruction);
 
 pub fn process_instruction(
-    _program_id: &Pubkey,
+    program_id: &Pubkey,
     accounts: &[AccountInfo],
     _instruction_data: &[u8],
 ) -> ProgramResult {
-    if accounts[0].key <= &Pubkey::default() {
+    if accounts[0].key <= program_id {
         return Err(ProgramError::InvalidArgument);
     }
     Ok(())

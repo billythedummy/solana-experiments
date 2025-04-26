@@ -56,7 +56,7 @@ async fn run_test(mut program_test: ProgramTest, pubkey: Pubkey) {
     );
     tx.sign(&[&PAYER], recent_blockhash);
     let tx_res = banks_client.process_transaction(tx).await;
-    match pubkey == Pubkey::default() {
+    match pubkey <= program::ID {
         true => {
             tx_res.unwrap_err();
         }

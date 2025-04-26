@@ -8,10 +8,16 @@ use solana_program::{
 #[cfg(not(feature = "no-entrypoint"))]
 solana_program::entrypoint!(process_instruction);
 
-#[derive(PartialOrd, Eq, PartialEq)]
+#[derive(Eq, PartialEq)]
 struct SyscallCmpPubkey<'a>(pub &'a Pubkey);
 
-impl<'a> Ord for SyscallCmpPubkey<'a> {
+impl PartialOrd for SyscallCmpPubkey<'_> {
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        Some(self.0.cmp(other.0))
+    }
+}
+
+impl Ord for SyscallCmpPubkey<'_> {
     fn cmp(&self, other: &Self) -> Ordering {
         #[cfg(target_os = "solana")]
         {
@@ -38,11 +44,11 @@ impl<'a> Ord for SyscallCmpPubkey<'a> {
 }
 
 pub fn process_instruction(
-    _program_id: &Pubkey,
+    program_id: &Pubkey,
     accounts: &[AccountInfo],
     _instruction_data: &[u8],
 ) -> ProgramResult {
-    if SyscallCmpPubkey(accounts[0].key) <= SyscallCmpPubkey(&Pubkey::default()) {
+    if SyscallCmpPubkey(accounts[0].key) <= SyscallCmpPubkey(program_id) {
         return Err(ProgramError::InvalidArgument);
     }
     Ok(())
